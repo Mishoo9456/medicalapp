@@ -23,7 +23,12 @@ class _ProfileState extends State<Profile> {
             CustomText(
               text: 'Ruchita',
               fontSize: 10,
-            )
+            ),
+            Container(
+              height: 100,
+              width: 300,
+              child: Image.asset('assets/file9.png'),
+            ),
           ],
         ),
       ),
