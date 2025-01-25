@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medicalapp/TopDoctor.dart';
 import 'package:medicalapp/widgets/BottomNavigationBar.dart';
 import 'package:medicalapp/widgets/CustomText.dart';
 import 'package:medicalapp/widgets/Textfoemfield.dart';
@@ -21,7 +22,7 @@ class _HomepageState extends State<Homepage> {
           Container(
             height: 400,
             width: 420,
-            color: Color(0xff87CEEB),
+            color: const Color(0xff87CEEB),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -53,7 +54,7 @@ class _HomepageState extends State<Homepage> {
                       height: 250,
                       width: 170,
                       // color: Colors.red,
-                      color: Color(0xff87CEEB),
+                      color: const Color(0xff87CEEB),
                       child: Image.asset(
                         'assets/file3.png',
                         // height: 100,
@@ -99,13 +100,16 @@ class _HomepageState extends State<Homepage> {
                             backgroundColor: Color(0xff407CE2),
                             radius: 30,
                             child: IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.of(context)
+                                    .push(MaterialPageRoute(builder: (context) => TopDoctors()));
+                              },
                               icon: Icon(Icons.medical_services_outlined),
                               color: Colors.white,
                               iconSize: 35,
                             ),
                           ),
-                          CustomText(
+                          const CustomText(
                             text: 'Top Doctors',
                             color: Colors.black,
                             fontSize: 18,
@@ -124,7 +128,7 @@ class _HomepageState extends State<Homepage> {
                               iconSize: 35,
                             ),
                           ),
-                          CustomText(
+                          const CustomText(
                             text: 'Pharmacy',
                             color: Colors.black,
                             fontSize: 18,
@@ -143,7 +147,7 @@ class _HomepageState extends State<Homepage> {
                               iconSize: 35,
                             ),
                           ),
-                          CustomText(
+                          const CustomText(
                             text: 'Embulance',
                             color: Colors.black,
                             fontSize: 18,
@@ -157,7 +161,7 @@ class _HomepageState extends State<Homepage> {
                   ),
                   Column(
                     children: [
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           CustomText(
@@ -195,16 +199,46 @@ class _HomepageState extends State<Homepage> {
                                     width: 60,
                                     child: Image.asset('assets/file.png'),
                                   ),
-                                  Text(
+                                  const Text(
                                       'The 25 healthiest fruit you can \n eat , According to a nutritionist'),
-                                  Icon(
+                                  const Icon(
                                     Icons.bookmark,
                                     color: Colors.blue,
                                   )
                                 ],
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            article(
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(color: Colors.black38),
+                              // width: 50,
+                              height: 70,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        border: Border.all(
+                                            color: const Color(0xffD3D3D3))),
+                                    height: 60,
+                                    width: 60,
+                                    child: Image.asset('assets/file.png'),
+                                  ),
+                                  const Text(
+                                      'The 25 healthiest fruit you can \n eat , According to a nutritionist'),
+                                  const Icon(
+                                    Icons.bookmark,
+                                    color: Colors.blue,
+                                  )
+                                ],
+                              ),
+                            ),
+                            const SizedBox(
                               height: 10,
                             ),
                             article(
@@ -225,16 +259,16 @@ class _HomepageState extends State<Homepage> {
                                     width: 60,
                                     child: Image.asset('assets/file.png'),
                                   ),
-                                  Text(
+                                  const Text(
                                       'The 25 healthiest fruit you can \n eat , According to a nutritionist'),
-                                  Icon(
+                                  const Icon(
                                     Icons.bookmark,
                                     color: Colors.blue,
                                   )
                                 ],
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             article(
@@ -255,39 +289,9 @@ class _HomepageState extends State<Homepage> {
                                     width: 60,
                                     child: Image.asset('assets/file.png'),
                                   ),
-                                  Text(
+                                  const Text(
                                       'The 25 healthiest fruit you can \n eat , According to a nutritionist'),
-                                  Icon(
-                                    Icons.bookmark,
-                                    color: Colors.blue,
-                                  )
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            article(
-                              borderRadius: BorderRadius.circular(20),
-                              border: Border.all(color: Colors.black38),
-                              // width: 50,
-                              height: 70,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        border: Border.all(
-                                            color: Color(0xffD3D3D3))),
-                                    height: 60,
-                                    width: 60,
-                                    child: Image.asset('assets/file.png'),
-                                  ),
-                                  Text(
-                                      'The 25 healthiest fruit you can \n eat , According to a nutritionist'),
-                                  Icon(
+                                  const Icon(
                                     Icons.bookmark,
                                     color: Colors.blue,
                                   )

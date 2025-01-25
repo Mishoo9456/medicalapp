@@ -19,9 +19,11 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(onPressed: (){}, icon: Icon(Icons.arrow_back_ios)),
         title: const Text(
           'Sign In',
           style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+          
         ),
         centerTitle: true,
       ),
@@ -146,7 +148,7 @@ class _SignInState extends State<SignIn> {
         
                   }),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Padding(
