@@ -17,8 +17,8 @@ class TopDoctors extends StatelessWidget {
           rating: '4.7',
           time: '800m away',
           onpressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const InterestScreen()));
+            // Navigator.of(context).push(MaterialPageRoute(
+            //     builder: (context) => const InterestScreen()));
           }),
       Item(
         title: 'Dr.Wanaama',
