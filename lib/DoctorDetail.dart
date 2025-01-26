@@ -4,31 +4,38 @@ import 'package:medicalapp/model/test_model.dart';
 import 'package:medicalapp/widgets/AboutFunctionality.dart';
 import 'package:medicalapp/widgets/CustomText.dart';
 import 'package:medicalapp/widgets/Dr.Rishi.dart';
+import 'package:medicalapp/widgets/InterestScreen.dart';
+import 'package:medicalapp/widgets/Intesrest.dart';
 import 'package:medicalapp/widgets/buttoncomponent.dart';
 import 'package:medicalapp/widgets/sized_box_extension.dart';
 
-class InterestScreen extends StatefulWidget {
-  const InterestScreen({super.key});
+class DoctorDetail extends StatefulWidget {
+  const DoctorDetail({super.key});
 
   @override
-  State<InterestScreen> createState() => _InterestScreenState();
+  State<DoctorDetail> createState() => _DoctorDetailState();
 }
 
-class _InterestScreenState extends State<InterestScreen> {
+class _DoctorDetailState extends State<DoctorDetail> {
   bool _isExpanded = false;
-  // Move the selectedInterests set here to retain its state
   final Set<int> selectedInterests = {};
+  int selectedIndex = -1; // For tracking the selected date container.
+  final List<DateTime> dates = List.generate(
+    30,
+    (index) => DateTime.now().add(Duration(days: index)),
+  ); // Generate 30 days from today.
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const TopDoctors()));
-            },
-            icon: const Icon(Icons.arrow_back_ios)),
+          onPressed: () {
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const TopDoctors()));
+          },
+          icon: const Icon(Icons.arrow_back_ios),
+        ),
         title: const Text(
           'Doctor Detail',
           style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
@@ -53,7 +60,6 @@ class _InterestScreenState extends State<InterestScreen> {
                   fontWeight: FontWeight.bold,
                 ),
 
-                //5.spaceV,
                 AboutFunctionality(
                   isExpanded: _isExpanded,
                   onPressed: () {
@@ -63,58 +69,81 @@ class _InterestScreenState extends State<InterestScreen> {
                   },
                 ),
 
-                GridView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: interestModelList.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 13,
-                    crossAxisSpacing: 13,
-                    childAspectRatio: 3,
-                  ),
-                  itemBuilder: (context, index) {
-                    final interest = interestModelList[index];
-                    final isSelected = selectedInterests.contains(index);
+                // Horizontal list of date containers
 
-                    return GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          if (isSelected) {
-                            selectedInterests.remove(index);
-                          } else {
-                            selectedInterests.add(index);
-                          }
-                        });
-                      },
-                      child: Container(
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          color: isSelected ? Colors.blue : Colors.transparent,
-                          border: Border.all(color: Colors.grey),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Row(
-                          children: [
-                            30.spaceH,
-                            10.spaceH,
-                            Center(
-                              child: Text(
-                                interest.title,
+                SizedBox(
+                  height: 80,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: dates.length,
+                    itemBuilder: (context, index) {
+                      final date = dates[index];
+                      final isSelected = selectedIndex == index;
+
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            selectedIndex = index;
+                          });
+                        },
+                        child: Container(
+                          width: 60,
+                          margin: const EdgeInsets.symmetric(horizontal: 8),
+                          decoration: BoxDecoration(
+                            color:
+                                isSelected ? Colors.blueAccent : Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              color: Colors.blueAccent,
+                              width: isSelected ? 2 : 1,
+                            ),
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Colors.black26,
+                                blurRadius: 5,
+                                offset: Offset(2, 2),
+                              ),
+                            ],
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "${date.day}",
                                 style: TextStyle(
-                                  fontSize: 12,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
                                   color:
                                       isSelected ? Colors.white : Colors.black,
                                 ),
                               ),
-                            ),
-                          ],
+                              Text(
+                                "${date.weekday == 7 ? "Sunday" : [
+                                    "Monday",
+                                    "Tuesday",
+                                    "Wednesday",
+                                    "Thursday",
+                                    "Friday",
+                                    "Saturday"
+                                  ][date.weekday - 1]}",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: isSelected
+                                      ? Colors.white70
+                                      : Colors.black54,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
+
                 15.spaceV,
+                IntrestScreen(),
+                30.spaceV,
                 Padding(
                   padding: const EdgeInsets.only(left: 10),
                   child: CustomButton(
@@ -125,13 +154,13 @@ class _InterestScreenState extends State<InterestScreen> {
                     child: const Text(
                       'Book Appoinment',
                       style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     onTap: () {
-
-
+                      // Handle appointment booking
                     },
                   ),
                 ),

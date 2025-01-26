@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medicalapp/homepage.dart';
 import 'package:medicalapp/widgets/CustomContainer.dart';
 import 'package:medicalapp/widgets/ListItemWidget.dart';
 
@@ -57,7 +58,10 @@ class TopDoctors extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-            onPressed: () {}, icon: const Icon(Icons.arrow_back_ios)),
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const Homepage()));
+            }, icon: const Icon(Icons.arrow_back_ios)),
         title: const Text(
           'Top Doctors',
           style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),

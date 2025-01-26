@@ -41,5 +41,8 @@ List<InterestModel> interestModelList = [
 
     title: "12:00 pm",
   ),
+  InterestModel(
 
+    title: "12:00 pm",
+  ),
 ];

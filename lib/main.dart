@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:medicalapp/Screen1.dart';
 import 'package:medicalapp/signin.dart';
+import 'package:medicalapp/widgets/Intesrest.dart';
 
 import 'DoctorDetail.dart';
 import 'TopDoctor.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  const TopDoctors(),
+      home:   Homepage(),
     );
   }
 }

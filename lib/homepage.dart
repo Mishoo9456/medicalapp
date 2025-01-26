@@ -5,6 +5,7 @@ import 'package:medicalapp/widgets/CustomText.dart';
 import 'package:medicalapp/widgets/Textfoemfield.dart';
 import 'package:medicalapp/widgets/article.dart';
 import 'package:medicalapp/widgets/container.dart';
+import 'package:medicalapp/widgets/pharmacy.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -122,7 +123,10 @@ class _HomepageState extends State<Homepage> {
                             backgroundColor: Color(0xff407CE2),
                             radius: 30,
                             child: IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.of(context)
+                                    .push(MaterialPageRoute(builder: (context) => Pharmacy()));
+                              },
                               icon: Icon(Icons.medical_services_outlined),
                               color: Colors.white,
                               iconSize: 35,
