@@ -14,17 +14,7 @@ class AboutFunctionality extends StatelessWidget {
     return Container(
      // margin: const EdgeInsets.all(16.0),
       padding: const EdgeInsets.all(16.0),
-      // decoration: BoxDecoration(
-      //   color: Colors.white,
-      //   borderRadius: BorderRadius.circular(10),
-      //   boxShadow: [
-      //     BoxShadow(
-      //       color: Colors.grey.withOpacity(0.5),
-      //       spreadRadius: 2,
-      //       blurRadius: 4,
-      //     ),
-      //   ],
-      // ),
+
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

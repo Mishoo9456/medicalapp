@@ -5,7 +5,7 @@ import 'package:medicalapp/widgets/CustomText.dart';
 import 'package:medicalapp/widgets/Textfoemfield.dart';
 import 'package:medicalapp/widgets/article.dart';
 import 'package:medicalapp/widgets/container.dart';
-import 'package:medicalapp/widgets/pharmacy.dart';
+import 'package:medicalapp/pharmacy.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
